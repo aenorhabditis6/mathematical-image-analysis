@@ -5,3 +5,6 @@ Function intended:
 - watermark detection
 - watermark extraction
 - watermark removal
+
+
+The dataset I chose is the first 50 cat images from Kaggle https://www.kaggle.com/datasets/muniryadi/cat-vs-rabbit. I like cat a bit more. 
