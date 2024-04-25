@@ -5,7 +5,7 @@ The page to store our attempt of JHU EN.553.493 final projects. Might be a littl
 - watermark addition, simply with text
 - watermark detection
 - watermark extraction
-- watermark removal
+- watermark removal 
 
 ## Authors 🫡
 Tina, Lily, Doris. Hats off to us.
