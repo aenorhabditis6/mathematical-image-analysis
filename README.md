@@ -3,6 +3,7 @@ The page to store our attempt of JHU EN.553.493 final projects. Might be a littl
 
 ## Function intended ⚙: 
 - watermark addition, simply with text
+  - Potential improvement: Complex test, transparent test
 - watermark detection
 - watermark extraction
 - watermark removal 
