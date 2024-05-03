@@ -18,7 +18,7 @@ The original dataset from Kaggle contains 50 images. We added the text-based wat
 
 After detection, our algorithm removes the entire rectangular watermark area:
 
-![Removed](https://github.com/aenorhabditis6/mathematical-image-analysis/assets/117194384/5199dec7-beec-411a-a920-3a9da8a14dcb.png)
+<img width="400" alt="Example" src="https://github.com/aenorhabditis6/mathematical-image-analysis/assets/117194384/5199dec7-beec-411a-a920-3a9da8a14dcb.png">
 
 ## Categories 🤔
 We are currently focusing on block distortion in image inpainting techniques. We intend to experiment with multiple inpainting techniques for comparison. Additionally, we are exploring text removal as a related problem.
