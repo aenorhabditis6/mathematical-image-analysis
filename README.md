@@ -7,7 +7,7 @@ This repository stores our attempt at the JHU EN.553.493 final project. It may b
 - **Watermark Addition**: Currently supports adding text watermarks. Potential improvements include handling complex text and transparency for platforms like Weibo and Xiaohongshu.
 - **Watermark Detection**: Automatic detection of watermarks.
 - **Watermark Extraction**: Capability to extract watermarks from images.
-- **Watermark Removal**: Removes watermarks from images.
+- **Watermark Removal**: Removes watermarks from images by impainting.
 
 ## Dataset
 <img width="300" alt="Example" src="https://github.com/aenorhabditis6/mathematical-image-analysis/assets/117194384/b0111f9d-cf2a-4d7b-8f08-9c74b6db6260.png">
