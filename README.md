@@ -7,7 +7,11 @@ The page to store our attempt of JHU EN.553.493 final projects. Might be a littl
 - watermark detection
   - Currently automatic
 - watermark extraction
-- watermark removal 
+- watermark removal
+
+## Catagories 🤔
+Based on general review of image inpainting techniques, we found that: 
+
 
 ## Authors 🫡
 Tina, Lily, Doris. Hats off to us.
