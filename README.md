@@ -10,16 +10,19 @@ This repository stores our attempt at the JHU EN.553.493 final project. It may b
 - **Watermark Removal**: Removes watermarks from images by impainting.
 
 ## Dataset
-<img width="300" alt="Example" src="https://github.com/aenorhabditis6/mathematical-image-analysis/assets/117194384/b0111f9d-cf2a-4d7b-8f08-9c74b6db6260.png">
 <img width="1000" alt="Screenshot 2024-05-03 at 11 41 19 AM" src="https://github.com/aenorhabditis6/mathematical-image-analysis/assets/117194384/06e1847b-013f-490e-be96-84ffae59c600">
 
-The original dataset from Kaggle contains 50 images. We added the text-based watermark "EN.553.493" to these images at specific locations. Using gradient descent, we were able to recover the watermark from all 50 images:
+The original dataset from Kaggle contains 50 images. We added the text-based watermark "EN.553.493" to these images at specific locations and change them to black and white. 
+<img width="1089" alt="Screenshot 2024-05-03 at 11 42 03 AM" src="https://github.com/aenorhabditis6/mathematical-image-analysis/assets/117194384/805cce6d-732c-479d-9236-37c0b76d4f3c">
+
+Using gradient descent, we were able to recover the watermark from all 50 images:
 
 <img width="600" alt="Recovery" src="https://github.com/aenorhabditis6/mathematical-image-analysis/assets/117194384/199486c2-0621-47b9-b83e-8e7892e8b332.png">
 
 After detection, our algorithm removes the entire rectangular watermark area:
 
-<img width="400" alt="Example" src="https://github.com/aenorhabditis6/mathematical-image-analysis/assets/117194384/5199dec7-beec-411a-a920-3a9da8a14dcb.png">
+<img width="1108" alt="Screenshot 2024-05-03 at 11 42 32 AM" src="https://github.com/aenorhabditis6/mathematical-image-analysis/assets/117194384/74fbf20c-ca47-4292-a74a-c25bce6bc514">
+
 
 ## Categories 🤔
 We are currently focusing on block distortion in image inpainting techniques. We intend to experiment with multiple inpainting techniques for comparison. Additionally, we are exploring text removal as a related problem.
