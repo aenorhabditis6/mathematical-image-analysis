@@ -11,6 +11,7 @@ This repository stores our attempt at the JHU EN.553.493 final project. It may b
 
 ## Dataset
 <img width="300" alt="Example" src="https://github.com/aenorhabditis6/mathematical-image-analysis/assets/117194384/b0111f9d-cf2a-4d7b-8f08-9c74b6db6260.png">
+<img width="1000" alt="Screenshot 2024-05-03 at 11 41 19 AM" src="https://github.com/aenorhabditis6/mathematical-image-analysis/assets/117194384/06e1847b-013f-490e-be96-84ffae59c600">
 
 The original dataset from Kaggle contains 50 images. We added the text-based watermark "EN.553.493" to these images at specific locations. Using gradient descent, we were able to recover the watermark from all 50 images:
 
