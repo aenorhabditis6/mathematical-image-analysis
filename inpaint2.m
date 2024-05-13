@@ -8,8 +8,10 @@ function image = inpaint2(s,lambda,iter,mask)
     [h,w] = size(s);
 
     uk = zeros(h,w);
-    LamMtx = zeros(h,w);
-    LamMtx(mask) = lambda; % crate the lambda matrix LamMtx
+    LamMtx = u;
+
+    LamMtx(~mask) = lambda;
+    LamMtx(mask) = 0;  % create the lambda matrix LamMtx
 
     % sx = [-1 0 1; -2 0 2; -1 0 1];
     % sy = [-1 -2 -1; 0 0 0; 1 2 1];
@@ -18,10 +20,10 @@ function image = inpaint2(s,lambda,iter,mask)
     % grad_y = conv2(u, sy, 'same');
     % gradient_magnitude = sqrt(grad_x.^2 + grad_y.^2);
 
-    D1 = spdiags([-ones(w,1),ones(w,1)], 0:1, w, w);
-    D1(w, 1) = 1;
-    D2 = spdiags([-ones(h,1),ones(h,1)], 0:1, h, h);
-    D2(h, 1) = 1;
+    D1 = spdiags([-ones(w,1),ones(w,1)], 0:1,w,w);
+    D1(w,1) = 1;
+    D2 = spdiags([-ones(h,1),ones(h,1)], 0:1,h,h);
+    D2(h,1) = 1;
 
     for i = 1:iter
         grad_x = u*D1;                                     
@@ -31,9 +33,12 @@ function image = inpaint2(s,lambda,iter,mask)
         [dx,dy] = shrink(grad_x,grad_y,bx,by,0.1);
     
         % u subproblem -- need to use Gauss-Siedel per Bergman iteration
-        Gk = Gau_Sei(dx,dy,bx,by,lambda,0.1,u,uk,h,w);     % find Gk by Gau_Sei solution, coded up from the original paper
+        Gk = Gau_Sei(dx,dy,bx,by,LamMtx,0.1,u,uk,h,w);     % find Gk by Gau_Sei solution, coded up from the original paper
         dif = (uk-Gk).^2;
         uk = Gk;
+        uk(uk < 0) = 0;
+        uk(uk > 255) = 0;
+
         % div_del_s = conv2(u,[0 1 0; 1 -4 1 ; 0 1 0],'same'); %% not divdels = del2(u);
         % newgrad_x = conv2(u, sx, 'same');
         % newgrad_y = conv2(u, sy, 'same');
@@ -47,21 +52,21 @@ function image = inpaint2(s,lambda,iter,mask)
         %  u(mask) = u(mask) - alpha * step_grad(mask);
 
         % update b
-        bx = bx + grad_x - (grad_x + bx) ./ abs(grad_x + bx);
-        by = by + grad_y - (grad_y + by) ./ abs(grad_y + by);
+        bx(mask) = bx(mask) + grad_x(mask) - (grad_x(mask) + bx(mask)) ./ abs(grad_x(mask) + bx(mask));
+        by(mask) = by(mask) + grad_y(mask) - (grad_y(mask) + by(mask)) ./ abs(grad_y(mask) + by(mask));
 
         disp(['Iteration: ', num2str(i)]);
         % disp(['Gradient Magnitude Mean: ', num2str(mean(newgrad_magn(:)))]);
         % disp(['TV Term Mean: ', num2str(mean(d(:)))]);
         % disp([num2str(alpha)])
 
-        subplot(2, 5, i);
-        imshow(uint8(u));
-        title(['Iteration: ', num2str(i)]);
-        drawnow;
+        % subplot(2, 5, i);
+        % imshow(uint8(uk));
+        % title(['Iteration: ', num2str(i)]);
+        % drawnow;
     end
-
-    image = uint8(uk);
+    image = uint8(abs(uk));
+    imshow(image);
 end
 
 % % Divergence operator
@@ -105,7 +110,6 @@ u_sum = conv2(u,laplacian,'same');
 db_sum = fwd_diff_row(dx) + fwd_diff_col(dy)-fwd_diff_row(bx)-fwd_diff_col(by);
 
 Gk = coefficient1 + coefficient2.*(u_sum + db_sum);
-
 end
         % u(mask) = u(mask) + (2*s(mask)-u(mask) + lambda*div_del_s(mask)./ newgrad_magn(mask));
 
@@ -132,7 +136,7 @@ function [dx,dy] = shrink(gx,gy,bx,by,constant)
 x1 = (gx + bx)./abs(gx + bx);
 
 dx = x1.*max(abs(gx + bx)-1/constant,0);
-dx(isnan(dx)) = 0; % set any NaN (Not a Number) values to 0
+dx(isnan(dx)) = 0;  % set any NaN (Not a Number) values to 0
 
 x2 = (gy + by)./abs(gy + by);
 
