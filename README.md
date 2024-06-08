@@ -56,6 +56,9 @@ After detection, our algorithm removes the entire rectangular watermark area:
 We are currently focusing on block distortion in image inpainting techniques. We intend to experiment with multiple inpainting techniques for comparison. Additionally, we are exploring text removal as a related problem.
 ![Inpainting](https://github.com/aenorhabditis6/mathematical-image-analysis/assets/117194384/ef58f8eb-7b1e-4a25-bb99-4c6635d6aac1.png)
 
+## Problem Statement
+We first develop an algorithm that investigates how to extract the watermark. Then, we implement 2 algorithms to inpaint the missing area. Check out our pdf for a visual demonstration!
+
 ## Authors 🫡
 Tina, Lily, Doris. Hats off to us!
 
