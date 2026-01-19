@@ -1,6 +1,6 @@
 # Mathematical Image Analysis
 
-This repository stores our attempt at the JHU EN.553.493 final project. It may be a little messy at the moment.
+Final project for JHU EN.553.493.
 
 ## Functionality Overview ⚙️:
 
